@@ -1,0 +1,75 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <!-- ONI (build 744825) embarque un 0Harmony.dll compilé contre .NET Framework 4.8. -->
+    <TargetFramework>net48</TargetFramework>
+    <LangVersion>latest</LangVersion>
+    <AssemblyName>SmartConnect</AssemblyName>
+    <RootNamespace>SmartConnect</RootNamespace>
+    <Version>1.0.0</Version>
+    <Nullable>disable</Nullable>
+    <ImplicitUsings>disable</ImplicitUsings>
+    <DebugType>none</DebugType>
+    <AppendTargetFrameworkToOutputPath>false</AppendTargetFrameworkToOutputPath>
+    <!-- true : PLib.dll doit être copié dans bin\ pour qu'ILRepack puisse le fusionner.
+         Seule la DLL fusionnée est déployée dans le dossier du mod. -->
+    <CopyLocalLockFileAssemblies>true</CopyLocalLockFileAssemblies>
+
+    <!-- Dossier Managed du jeu. Surcharger si besoin :
+         dotnet build -c Release -p:ONIManaged="X:\...\OxygenNotIncluded_Data\Managed" -->
+    <ONIManaged Condition="'$(ONIManaged)' == ''">G:\Program Files (x86)\Steam\steamapps\common\OxygenNotIncluded\OxygenNotIncluded_Data\Managed</ONIManaged>
+
+    <!-- Dossier de déploiement (mods locaux d'ONI). -->
+    <ONIModDir Condition="'$(ONIModDir)' == ''">$(USERPROFILE)\Documents\Klei\OxygenNotIncluded\mods\Local\SmartConnect</ONIModDir>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Microsoft.NETFramework.ReferenceAssemblies" Version="1.0.3" PrivateAssets="all" />
+    <!-- PLib : écran d'options dans le menu des mods. Fusionné dans la DLL par ILRepack (voir ILRepack.targets). -->
+    <PackageReference Include="PLib" Version="4.25.0" />
+    <PackageReference Include="ILRepack.Lib.MSBuild.Task" Version="2.0.40" PrivateAssets="all" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <!-- Private=false : ne JAMAIS copier les DLL du jeu dans le dossier du mod. -->
+    <Reference Include="Assembly-CSharp">
+      <HintPath>$(ONIManaged)\Assembly-CSharp.dll</HintPath>
+      <Private>false</Private>
+    </Reference>
+    <Reference Include="Assembly-CSharp-firstpass">
+      <HintPath>$(ONIManaged)\Assembly-CSharp-firstpass.dll</HintPath>
+      <Private>false</Private>
+    </Reference>
+    <Reference Include="0Harmony">
+      <HintPath>$(ONIManaged)\0Harmony.dll</HintPath>
+      <Private>false</Private>
+    </Reference>
+    <Reference Include="Newtonsoft.Json">
+      <HintPath>$(ONIManaged)\Newtonsoft.Json.dll</HintPath>
+      <Private>false</Private>
+    </Reference>
+    <Reference Include="UnityEngine">
+      <HintPath>$(ONIManaged)\UnityEngine.dll</HintPath>
+      <Private>false</Private>
+    </Reference>
+    <Reference Include="UnityEngine.CoreModule">
+      <HintPath>$(ONIManaged)\UnityEngine.CoreModule.dll</HintPath>
+      <Private>false</Private>
+    </Reference>
+  </ItemGroup>
+
+  <Target Name="CheckONIManaged" BeforeTargets="ResolveAssemblyReferences">
+    <Error Condition="!Exists('$(ONIManaged)\Assembly-CSharp.dll')"
+           Text="Assembly-CSharp.dll introuvable dans '$(ONIManaged)'. Passe le bon chemin : dotnet build -c Release -p:ONIManaged=&quot;...\OxygenNotIncluded_Data\Managed&quot;" />
+  </Target>
+
+  <!-- Après la fusion ILRepack (Release) : copie la DLL fusionnée + yaml + licences dans mods\Local\SmartConnect.
+       THIRD-PARTY-NOTICES.txt doit accompagner la DLL : elle contient PLib (licence MIT). -->
+  <Target Name="DeployToONI" AfterTargets="ILRepacker" Condition="'$(Configuration)' == 'Release'">
+    <MakeDir Directories="$(ONIModDir)" />
+    <Copy SourceFiles="$(TargetPath);$(MSBuildProjectDirectory)\mod.yaml;$(MSBuildProjectDirectory)\mod_info.yaml;$(MSBuildProjectDirectory)\LICENSE.txt;$(MSBuildProjectDirectory)\THIRD-PARTY-NOTICES.txt"
+          DestinationFolder="$(ONIModDir)" />
+    <Message Importance="high" Text="SmartConnect déployé dans : $(ONIModDir)" />
+  </Target>
+
+</Project>

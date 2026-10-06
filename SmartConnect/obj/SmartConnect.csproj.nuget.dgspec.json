@@ -1,0 +1,69 @@
+{
+  "format": 1,
+  "restore": {
+    "C:\\Users\\loris\\Downloads\\SmartConnect\\SmartConnect.csproj": {}
+  },
+  "projects": {
+    "C:\\Users\\loris\\Downloads\\SmartConnect\\SmartConnect.csproj": {
+      "version": "1.0.0",
+      "restore": {
+        "projectUniqueName": "C:\\Users\\loris\\Downloads\\SmartConnect\\SmartConnect.csproj",
+        "projectName": "SmartConnect",
+        "projectPath": "C:\\Users\\loris\\Downloads\\SmartConnect\\SmartConnect.csproj",
+        "packagesPath": "C:\\Users\\loris\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\loris\\Downloads\\SmartConnect\\obj\\",
+        "projectStyle": "PackageReference",
+        "configFilePaths": [
+          "C:\\Users\\loris\\AppData\\Roaming\\NuGet\\NuGet.Config"
+        ],
+        "originalTargetFrameworks": [
+          "net48"
+        ],
+        "sources": {
+          "https://api.nuget.org/v3/index.json": {}
+        },
+        "frameworks": {
+          "net48": {
+            "framework": "net48",
+            "targetAlias": "net48",
+            "projectReferences": {}
+          }
+        },
+        "warningProperties": {
+          "warnAsError": [
+            "NU1605"
+          ]
+        },
+        "restoreAuditProperties": {
+          "enableAudit": "true",
+          "auditLevel": "low",
+          "auditMode": "direct"
+        },
+        "SdkAnalysisLevel": "10.0.400"
+      },
+      "frameworks": {
+        "net48": {
+          "framework": "net48",
+          "targetAlias": "net48",
+          "dependencies": {
+            "ILRepack.Lib.MSBuild.Task": {
+              "suppressParent": "All",
+              "target": "Package",
+              "version": "[2.0.40, )"
+            },
+            "Microsoft.NETFramework.ReferenceAssemblies": {
+              "suppressParent": "All",
+              "target": "Package",
+              "version": "[1.0.3, )"
+            },
+            "PLib": {
+              "target": "Package",
+              "version": "[4.25.0, )"
+            }
+          },
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\10.0.401\\RuntimeIdentifierGraph.json"
+        }
+      }
+    }
+  }
+}

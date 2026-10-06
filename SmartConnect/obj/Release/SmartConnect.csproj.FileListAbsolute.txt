@@ -1,0 +1,9 @@
+C:\Users\loris\Downloads\SmartConnect\bin\Release\SmartConnect.dll
+C:\Users\loris\Downloads\SmartConnect\bin\Release\PLib.dll
+C:\Users\loris\Downloads\SmartConnect\obj\Release\SmartConnect.csproj.AssemblyReference.cache
+C:\Users\loris\Downloads\SmartConnect\obj\Release\SmartConnect.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\loris\Downloads\SmartConnect\obj\Release\SmartConnect.AssemblyInfoInputs.cache
+C:\Users\loris\Downloads\SmartConnect\obj\Release\SmartConnect.AssemblyInfo.cs
+C:\Users\loris\Downloads\SmartConnect\obj\Release\SmartConnect.csproj.CoreCompileInputs.cache
+C:\Users\loris\Downloads\SmartConnect\obj\Release\SmartCon.5886B166.Up2Date
+C:\Users\loris\Downloads\SmartConnect\obj\Release\SmartConnect.dll

@@ -1,0 +1,13 @@
+{
+  "version": 2,
+  "dgSpecHash": "OZsLr2qxOms=",
+  "success": true,
+  "projectFilePath": "C:\\Users\\loris\\Downloads\\SmartConnect\\SmartConnect.csproj",
+  "expectedPackageFiles": [
+    "C:\\Users\\loris\\.nuget\\packages\\ilrepack.lib.msbuild.task\\2.0.40\\ilrepack.lib.msbuild.task.2.0.40.nupkg.sha512",
+    "C:\\Users\\loris\\.nuget\\packages\\microsoft.netframework.referenceassemblies\\1.0.3\\microsoft.netframework.referenceassemblies.1.0.3.nupkg.sha512",
+    "C:\\Users\\loris\\.nuget\\packages\\microsoft.netframework.referenceassemblies.net48\\1.0.3\\microsoft.netframework.referenceassemblies.net48.1.0.3.nupkg.sha512",
+    "C:\\Users\\loris\\.nuget\\packages\\plib\\4.25.0\\plib.4.25.0.nupkg.sha512"
+  ],
+  "logs": []
+}

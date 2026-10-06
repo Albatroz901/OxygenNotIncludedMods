@@ -1,0 +1,17 @@
+<Project>
+  <!-- Remplace la cible par défaut d'ILRepack.Lib.MSBuild.Task : on fusionne uniquement PLib
+       dans SmartConnect.dll. Les DLL du jeu sont seulement résolues via LibraryPath. -->
+  <Target Name="ILRepacker" AfterTargets="Build" Condition="'$(Configuration)' == 'Release'">
+    <ItemGroup>
+      <InputAssemblies Include="$(TargetPath)" />
+      <InputAssemblies Include="$(TargetDir)PLib.dll" />
+    </ItemGroup>
+    <ILRepack Parallel="true"
+              Internalize="false"
+              DebugInfo="false"
+              TargetKind="Dll"
+              InputAssemblies="@(InputAssemblies)"
+              LibraryPath="$(ONIManaged)"
+              OutputFile="$(TargetPath)" />
+  </Target>
+</Project>

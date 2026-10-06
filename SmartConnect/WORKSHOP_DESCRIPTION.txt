@@ -1,0 +1,43 @@
+[h1]Smart Connect[/h1]
+[b]Connect to an existing pipe, rail or wire without rebuilding it.[/b]
+
+[h2]The problem[/h2]
+In vanilla, when you drag a pipe, conveyor rail or wire onto an existing line made of another material (or of another type: insulated, radiant, conductive...), the game orders a rebuild of the existing tiles you touch, in the new material. Extending a granite pipe with copper replaces its end tile with copper, even if you only wanted to connect to it.
+
+[h2]What this mod does[/h2]
+An existing tile under your drag is only rebuilt when you drag [i]along[/i] the existing line, that is when one of its neighbours in the drag is an existing tile it was already connected to. Otherwise it keeps its material and type, and only gets the new connection.
+[list]
+[*]Extend a line from its end, branch off it (T junction), cross it, or join two adjacent lines that were not connected: the existing tiles are kept.
+[*]Drag along an existing line: it is rebuilt with the new material, as in vanilla.
+[*]Click on a single existing tile: it is rebuilt, as in vanilla.
+[/list]
+While dragging, the existing tiles under the drag are tinted: [b]orange[/b] if they will be rebuilt, [b]blue[/b] if they will be kept. New tiles stay white, invalid spots red.
+
+Works for liquid and gas pipes, conveyor rails, power wires, automation wires and ribbons.
+
+[h2]What it does NOT do[/h2]
+[list]
+[*]It does not touch lines already built, nor rebuild orders already placed: it only changes what a new drag orders.
+[*]It cannot read every intention: if you start a drag one tile inside an existing line, the tiles you drag along are rebuilt. Start on the end tile, or cancel the extra rebuild orders.
+[*]With debug or sandbox instant build on, the game never rebuilds existing tiles (vanilla behaviour), so every existing tile shows as kept.
+[/list]
+
+[h2]Settings (Mods menu → Options), applied immediately[/h2]
+[list]
+[*][b]Protect other pipe and wire types[/b] (on by default): also keep existing tiles of another type (insulated or radiant pipe, conductive or Heavi-Watt wire, ribbon...). Off: only tiles of the same type with another material are protected.
+[*][b]Show preview colors[/b] (on by default).
+[*][b]Rebuilt tile color[/b] and [b]Kept tile color[/b]: color pickers for the preview.
+[/list]
+
+[h2]Compatibility[/h2]
+[list]
+[*]Nothing is saved in your game: safe to add or remove at any time.
+[*]Only patches the pipe/rail/wire build tool. If a game update changes it, the mod logs a warning and the game keeps its vanilla behaviour.
+[*]Works with the base game and Spaced Out!. Uses PLib for the options screen (bundled, nothing else to install).
+[/list]
+
+[h2]Source code and license[/h2]
+The full C# project is on [url=https://github.com/Albatroz901]GitHub (Albatroz901)[/url]. The code is released into the public domain ([url=https://unlicense.org]The Unlicense[/url]): anyone may copy, modify, improve or republish it, no permission needed. The options screen uses PLib by Peter Han (MIT license), bundled in the DLL.
+
+[h2]Disclaimer[/h2]
+This mod was written by Claude. Bugs are possible: please report them in the comments.
